@@ -1,5 +1,3 @@
-// const { response } = require("express");
-
 const FILES_TO_CACHE = [
     '/',
     '/index.html',
