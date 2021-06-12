@@ -1,4 +1,4 @@
-const request = indexedDB.open('BudgetDB', 1);
+const request = indexedDB.open('budget', 1);
 let db;
 
 request.onupgradeneeded = ({ target }) => {
@@ -19,6 +19,7 @@ request.onerror = function(evt) {
 }
 
 function saveRecord(record) {
+    console.log()
     const transaction = db.transaction(['pending'], 'readwrite');
     const store = transaction.objectStore('pending');
 
