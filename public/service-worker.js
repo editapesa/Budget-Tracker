@@ -1,3 +1,5 @@
+const { response } = require("express");
+
 const FILES_TO_CACHE = [
     '/',
     '/index.html',
@@ -40,3 +42,28 @@ self.addEventListener('activate', function(evt) {
 
     self.clients.claim();
 });
+
+//fetch
+self.addEventListener('fetch', function(evt) {
+    if (evt.request.url.includes('/api/')) {
+        evt.respondWith(
+            caches.open(DATA_CACHE_NAME).then(cache => {
+                return fetch(evt.request)
+                .then(response => {      
+                    //if response is good, clone & store it in the cache
+                    if (response.status === 200) {
+                        cache.put(evt.request.url, response.clone());
+                    }
+                    return response;
+                })
+                .catch(err => {
+                    //network req fails, try to get from cache
+                    return cache.match(evt.request);
+                });
+            }).catch(err => console.log(err))
+        );
+
+        return;
+    }
+    
+})
