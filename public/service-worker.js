@@ -1,4 +1,4 @@
-const { response } = require("express");
+// const { response } = require("express");
 
 const FILES_TO_CACHE = [
     '/',
@@ -15,7 +15,7 @@ const DATA_CACHE_NAME = 'data-cache-v1';
 //install & register the service worker
 self.addEventListener('install', function (evt) {
     evt.waitUntil(
-        caches.open(DATA_CACHE_NAME).then((cache) => cache.add('/api/transactions'))
+        caches.open(DATA_CACHE_NAME).then((cache) => cache.add('/api/transaction'))
     );
 
     evt.waitUntil(
