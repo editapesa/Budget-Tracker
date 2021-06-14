@@ -12,6 +12,5 @@ This project is licensed under the MIT license. Click the link below for more in
 ## Visuals
 Click here to view the app: [Budget Tracker](https://peaceful-shore-19429.herokuapp.com/)
 
-![demo pic 1](demo-pic1.jpg)
+![demo pic 1](public/images/demo-pic1.jpg)
 
-![demo pic 2](demo-pic2.jpg)
